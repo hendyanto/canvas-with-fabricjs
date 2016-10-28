@@ -1,0 +1,30 @@
+<html>
+  <head></head>
+  <body>
+    <script src="fabric.min.js"></script>
+    <script src="main.js"></script>
+    <canvas width="500" height="500" style="border: 1px solid red;" id="c"></canvas>
+
+    <script>
+      var canvas = new fabric.Canvas("c");
+      var createNewRectangle = function(){
+        var i = new Rectangle(canvas, ...arguments);
+        return i;
+      }
+    </script>
+
+    <script>
+      var kotak = createNewRectangle('blue');
+      kotak.moveDown();
+      kotak.moveRight();
+
+      var kotak2 = createNewRectangle('red');
+      kotak2.moveRight();
+      kotak2.moveDown();
+      kotak2.moveRight();
+      kotak2.moveRight();
+      kotak2.moveRight();
+      kotak2.moveRight();
+    </script>
+  </body>
+</html>
