@@ -12,7 +12,7 @@ Trying to make sure it is easy for them to understand codes from basics, by:
 
 ## **Usage** ##
 
-`var one = new Box('red');`
+`var one = new createNewRectangle('red');`
 
 ### available movements ###
 
