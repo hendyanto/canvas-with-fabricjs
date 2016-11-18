@@ -22,3 +22,9 @@ one.moveUp();
 one.moveRight();
 one.moveLeft();
 ```
+```javascript
+loop(12, function(){
+one.moveDown();
+one.moveLeft();
+});
+```
