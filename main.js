@@ -1,4 +1,3 @@
-
 var lines = {
   canvas: null,
   setCanvas: function(c){
@@ -101,6 +100,12 @@ function Rectangle(canvas, colour='red', position={}){
     },
     triggerAnimation: function(){
       if(!this.isMoving && this.movementBuffer.length > 0){
+
+        if(this.config.colour == 'rainbow'){
+          var colours = ['red','green','blue','yellow','gold','purple','silver','black'];
+          this.rect.set("fill", colours[Math.floor(Math.random()*colours.length)]);
+        }
+
         var movement = this.movementBuffer.shift();
 
         this.isMoving = true;
