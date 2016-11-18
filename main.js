@@ -99,27 +99,38 @@ function Rectangle(canvas, colour='red', position={}){
     animate: function(property, value){
       this.movementBuffer.push({ "property": property, "value": value });
     },
-    startAnimation: function(){
-      setInterval(function(){
-        if(!this.isMoving && this.movementBuffer.length > 0){
-          var movement = this.movementBuffer.shift();
+    triggerAnimation: function(){
+      if(!this.isMoving && this.movementBuffer.length > 0){
+        var movement = this.movementBuffer.shift();
 
-          this.isMoving = true;
-          this.rect.animate(movement.property, movement.value, {
-            duration: 500,
-            onChange: this.canvas.renderAll.bind(this.canvas),
-            onComplete: function(){
-              this.isMoving = false;
-            }.bind(this)
-          });
-        }
-      }.bind(this), 100);
+        this.isMoving = true;
+        this.rect.animate(movement.property, movement.value, {
+          duration: 500,
+          onChange: this.canvas.renderAll.bind(this.canvas),
+          onComplete: function(){
+            this.isMoving = false;
+          }.bind(this)
+        });
+      }
     }
   };
   var instance = rectangle;
   instance.setCanvas(canvas);
   instance.setColour(colour);
   instance.make();
-  instance.startAnimation();
   return instance;
 }
+
+var animationManager = {
+  objects: [],
+  register: function(obj){
+    this.objects.push(obj);
+  },
+  start: function(){
+    setInterval(function(){
+      this.objects.forEach(function(el){
+        el.triggerAnimation();
+      });
+    }.bind(this), 100);
+  }
+};

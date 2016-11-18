@@ -9,12 +9,21 @@
       var canvas = new fabric.Canvas("c");
       var createNewRectangle = function(){
         var i = new Rectangle(canvas, ...arguments);
+        animationManager.register(i);
         return i;
       }
+
+      animationManager.start();
     </script>
 
     <script>
       var kotak = createNewRectangle('blue');
+      kotak.moveDown();
+      kotak.moveRight();
+      kotak.moveDown();
+      kotak.moveRight();
+      kotak.moveDown();
+      kotak.moveRight();
       kotak.moveDown();
       kotak.moveRight();
 
@@ -25,6 +34,18 @@
       kotak2.moveRight();
       kotak2.moveRight();
       kotak2.moveRight();
+
+      var kotak3 = createNewRectangle('green');
+      kotak3.moveRight();
+      kotak3.moveRight();
+      kotak3.moveDown();
+      kotak3.moveRight();
+      kotak3.moveRight();
+      kotak3.moveRight();
+      kotak3.moveRight();
+      kotak3.moveRight();
+      kotak3.moveDown();
+      kotak3.moveDown();
     </script>
   </body>
 </html>
