@@ -105,7 +105,7 @@ function Rectangle(canvas, colour='red', position={}){
 
         this.isMoving = true;
         this.rect.animate(movement.property, movement.value, {
-          duration: 500,
+          duration: 100,
           onChange: this.canvas.renderAll.bind(this.canvas),
           onComplete: function(){
             this.isMoving = false;
@@ -131,6 +131,6 @@ var animationManager = {
       this.objects.forEach(function(el){
         el.triggerAnimation();
       });
-    }.bind(this), 100);
+    }.bind(this), 1);
   }
 };

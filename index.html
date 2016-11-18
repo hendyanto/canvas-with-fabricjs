@@ -14,38 +14,179 @@
       }
 
       animationManager.start();
+
+      var loop = function(num, callback){
+        for(i=0; i<num ;i++){
+          callback();
+        }
+      };
     </script>
 
     <script>
-      var kotak = createNewRectangle('blue');
-      kotak.moveDown();
-      kotak.moveRight();
-      kotak.moveDown();
-      kotak.moveRight();
-      kotak.moveDown();
-      kotak.moveRight();
-      kotak.moveDown();
-      kotak.moveRight();
+      var blue = createNewRectangle('blue');
+      var green = createNewRectangle('green');
+      var red = createNewRectangle('red');
+      var yellow = createNewRectangle('yellow');
 
-      var kotak2 = createNewRectangle('red');
-      kotak2.moveRight();
-      kotak2.moveDown();
-      kotak2.moveRight();
-      kotak2.moveRight();
-      kotak2.moveRight();
-      kotak2.moveRight();
+      var gold = createNewRectangle('gold');
+      var silver = createNewRectangle('silver');
+      var purple = createNewRectangle('purple');
+      var orange = createNewRectangle('orange');
 
-      var kotak3 = createNewRectangle('green');
-      kotak3.moveRight();
-      kotak3.moveRight();
-      kotak3.moveDown();
-      kotak3.moveRight();
-      kotak3.moveRight();
-      kotak3.moveRight();
-      kotak3.moveRight();
-      kotak3.moveRight();
-      kotak3.moveDown();
-      kotak3.moveDown();
+      loop(24, function(){
+        blue.moveRight();
+        blue.moveDown();
+
+        yellow.moveDown();
+        yellow.moveRight();
+      });
+
+      loop(12, function(){
+        gold.moveDown();
+        gold.moveRight();
+        silver.moveDown();
+        silver.moveRight();
+        purple.moveDown();
+        purple.moveRight();
+        orange.moveDown();
+        orange.moveRight();
+      });
+
+      loop(6, function(){
+        gold.moveRight();
+        silver.moveUp();
+        purple.moveLeft();
+        orange.moveDown();
+      });
+
+      loop(12, function(){
+        gold.moveLeft();
+        silver.moveDown();
+        purple.moveRight();
+        orange.moveUp();
+      });
+
+      loop(6, function(){
+        gold.moveDown();
+        silver.moveRight();
+        purple.moveUp();
+        orange.moveLeft();
+      });
+
+      loop(6, function(){
+        gold.moveLeft();
+        silver.moveDown();
+        purple.moveRight();
+        orange.moveUp();
+      });
+      loop(6, function(){
+        gold.moveDown();
+        silver.moveRight();
+        purple.moveUp();
+        orange.moveLeft();
+      });
+
+      loop(6, function(){
+        gold.moveRight();
+        orange.moveDown();
+        purple.moveLeft();
+        silver.moveUp();
+      });
+
+      loop(12, function(){
+        gold.moveRight();
+        gold.moveUp();
+
+        orange.moveDown();
+        orange.moveRight();
+
+        purple.moveLeft();
+        purple.moveDown();
+
+        silver.moveUp();
+        silver.moveLeft();
+      });
+
+      loop(12,function(){
+        gold.moveUp();
+        gold.moveLeft();
+        gold.moveDown();
+
+        purple.moveDown();
+        purple.moveRight();
+        purple.moveUp();
+
+        silver.moveLeft();
+        silver.moveDown();
+        silver.moveRight();
+
+        orange.moveRight();
+        orange.moveUp();
+        orange.moveLeft();
+      });
+
+      loop(10,function(){
+        gold.moveDown();
+        gold.moveRight();
+        gold.moveUp();
+
+        purple.moveUp();
+        purple.moveLeft();
+        purple.moveDown();
+
+        silver.moveRight();
+        silver.moveUp();
+        silver.moveLeft();
+
+        orange.moveLeft();
+        orange.moveDown();
+        orange.moveRight();
+      });
+
+      loop(24,function(){
+        red.moveRight();
+        green.moveDown();
+      });
+      loop(24,function(){
+        red.moveDown();
+        green.moveRight();
+      });
+      loop(24,function(){
+        red.moveLeft();
+        green.moveUp();
+      });
+
+      loop(24, function(){
+        green.moveLeft();
+        green.moveDown();
+
+        red.moveUp();
+        red.moveRight();
+      });
+
+      loop(24, function(){
+        yellow.moveUp();
+        yellow.moveLeft();
+        yellow.moveDown();
+
+        blue.moveLeft();
+        blue.moveUp();
+        blue.moveRight();
+      });
+
+      loop(12, function(){
+        red.moveLeft();
+        green.moveRight();
+        yellow.moveUp();
+        blue.moveDown();
+      });
+
+      loop(24, function(){
+        red.moveDown();
+        green.moveUp();
+        yellow.moveRight();
+        blue.moveLeft();
+      });
     </script>
   </body>
 </html>
