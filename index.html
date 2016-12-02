@@ -6,6 +6,7 @@
     <canvas width="500" height="500" style="border: 1px solid red;" id="c"></canvas>
 
     <script>
+
       var canvas = new fabric.Canvas("c");
       var createNewRectangle = function(){
         var i = new Rectangle(canvas, ...arguments);
@@ -20,18 +21,24 @@
           callback();
         }
       };
+
     </script>
 
     <script>
-      var blue = createNewRectangle('rainbow');
-      var green = createNewRectangle('rainbow');
-      var red = createNewRectangle('rainbow');
-      var yellow = createNewRectangle('rainbow');
+      var blue = createNewRectangle('blue');
+      var green = createNewRectangle('green');
+      var red = createNewRectangle('red');
+      var yellow = createNewRectangle('yellow');
 
-      var gold = createNewRectangle('rainbow');
-      var silver = createNewRectangle('rainbow');
-      var purple = createNewRectangle('rainbow');
-      var orange = createNewRectangle('rainbow');
+      var gold = createNewRectangle('transparent');
+      var silver = createNewRectangle('transparent');
+      var purple = createNewRectangle('transparent');
+      var orange = createNewRectangle('transparent');
+
+      gold = {moveDown:function(){},moveRight:function(){},moveUp:function(){},moveLeft:function(){}};
+      silver = {moveDown:function(){},moveRight:function(){},moveUp:function(){},moveLeft:function(){}};
+      purple = {moveDown:function(){},moveRight:function(){},moveUp:function(){},moveLeft:function(){}};
+      orange = {moveDown:function(){},moveRight:function(){},moveUp:function(){},moveLeft:function(){}};
 
       loop(24, function(){
         blue.moveRight();

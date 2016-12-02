@@ -110,14 +110,47 @@ function Rectangle(canvas, colour='red', position={}){
 
         this.isMoving = true;
         this.rect.animate(movement.property, movement.value, {
-          duration: 100,
+          duration: 10,
           onChange: this.canvas.renderAll.bind(this.canvas),
           onComplete: function(){
             this.isMoving = false;
           }.bind(this)
         });
       }
+    },
+
+    move: function(){
+      var args = arguments;
+
+      var loopCount = 1;
+      var haveLoop = 0;
+
+      if(Number.isInteger(args[args.length-1])){
+        loopCount = args[args.length-1];
+        haveLoop = 1;
+      }
+
+      for(var l=0; l < loopCount; l++){
+        for(var i=0 ; i < args.length - haveLoop ; i++){
+          switch(args[i]){
+            case 'up':
+              this.moveUp();
+              break;
+            case 'down':
+              this.moveDown();
+              break;
+            case 'right':
+              this.moveRight();
+              break;
+            case 'left':
+              this.moveLeft();
+              break;
+          }
+        }
+      }
+      return this;
     }
+
   };
   var instance = rectangle;
   instance.setCanvas(canvas);
