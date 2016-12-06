@@ -110,7 +110,7 @@ function Rectangle(canvas, colour='red', position={}){
 
         this.isMoving = true;
         this.rect.animate(movement.property, movement.value, {
-          duration: 10,
+          duration: 100,
           onChange: this.canvas.renderAll.bind(this.canvas),
           onComplete: function(){
             this.isMoving = false;
