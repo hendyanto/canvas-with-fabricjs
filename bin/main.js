@@ -197,6 +197,13 @@ var Rectangle = exports.Rectangle = function () {
       }
     }
   }, {
+    key: 'fart',
+    value: function fart() {
+      /* literally, at those children request */
+      var audio = new Audio('assets/sound.mp3');
+      audio.play();
+    }
+  }, {
     key: 'move',
     value: function move() {
       var args = arguments;
