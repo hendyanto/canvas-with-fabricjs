@@ -68,12 +68,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var Rectangle = exports.Rectangle = function () {
   function Rectangle(canvas) {
     var colour = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'red';
+    var animationDuration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 100;
 
     _classCallCheck(this, Rectangle);
 
     this._config = {
       moveSpeed: 20,
-      colour: colour
+      colour: colour,
+      animationDuration: animationDuration
     };
     this._position = {
       left: 0,
@@ -188,7 +190,7 @@ var Rectangle = exports.Rectangle = function () {
         var movement = this.movementBuffer().shift();
         this.isMoving(true);
         this.rect().animate(movement.property, movement.value, {
-          duration: 100,
+          duration: this.config().animationDuration,
           onChange: this.canvas().renderAll.bind(this.canvas()),
           onComplete: function () {
             this.isMoving(false);

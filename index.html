@@ -19,8 +19,8 @@
     </script>
 
     <script>
-        var a = createNewRectangle('gold');
-        var b = createNewRectangle('blue');
+        var a = createNewRectangle('gold', 500);
+        var b = createNewRectangle('blue', 500);
 
         a.move('right','down','left','up', 3);
         b.move('right','right','left','down', 3);
@@ -28,6 +28,8 @@
         b.move('stay',5);
 
         b.move('right', 5);
+
+        a.fart();
     </script>
   </body>
 </html>
