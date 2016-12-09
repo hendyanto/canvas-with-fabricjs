@@ -1,12 +1,60 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var AnimationManager = function () {
+  function AnimationManager() {
+    _classCallCheck(this, AnimationManager);
+
+    this._objects = [];
+  }
+
+  _createClass(AnimationManager, [{
+    key: "objects",
+    value: function objects() {
+      return this._objects;
+    }
+  }, {
+    key: "register",
+    value: function register(obj) {
+      this.objects().push(obj);
+    }
+  }, {
+    key: "start",
+    value: function start() {
+      setInterval(function () {
+        this.objects().forEach(function (el) {
+          el.triggerAnimation();
+        });
+      }.bind(this), 1);
+    }
+  }]);
+
+  return AnimationManager;
+}();
+
+exports.default = AnimationManager;
+
 },{}],2:[function(require,module,exports){
-'use strict';
+"use strict";
+
+var _animation_manager = require("./animation_manager");
+
+var _animation_manager2 = _interopRequireDefault(_animation_manager);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 window.Rectangle = require('./rectangle.js').Rectangle;
+window.AnimationManager = new _animation_manager2.default();
 
-},{"./rectangle.js":3}],3:[function(require,module,exports){
+},{"./animation_manager":1,"./rectangle.js":3}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -19,11 +67,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var Rectangle = exports.Rectangle = function () {
   function Rectangle(canvas) {
+    var colour = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'red';
+
     _classCallCheck(this, Rectangle);
 
     this._config = {
       moveSpeed: 20,
-      colour: 'red'
+      colour: colour
     };
     this._position = {
       left: 0,
@@ -119,6 +169,14 @@ var Rectangle = exports.Rectangle = function () {
       this.registerMovement('top', top);
     }
   }, {
+    key: 'stay',
+    value: function stay() {
+      var top = this.position().top;
+      this.position().top = top;
+
+      this.registerMovement('top', top);
+    }
+  }, {
     key: 'registerMovement',
     value: function registerMovement(property, value) {
       this.movementBuffer().push({ property: property, value: value });
@@ -165,6 +223,9 @@ var Rectangle = exports.Rectangle = function () {
               break;
             case 'left':
               this.moveLeft();
+              break;
+            case 'stay':
+              this.stay();
               break;
           }
         }

@@ -9,37 +9,25 @@
 
       var canvas = new fabric.Canvas("c");
       var createNewRectangle = function(){
-        // var i = new Rectangle(canvas, ...arguments);
-        // animationManager.register(i);
-        // return i;
+        var i = new Rectangle(canvas, ...arguments);
+        AnimationManager.register(i);
+        return i;
       }
 
-      var animationManager = {
-        objects: [],
-        register: function(obj){
-          this.objects.push(obj);
-        },
-        start: function(){
-          setInterval(function(){
-            this.objects.forEach(function(el){
-              el.triggerAnimation();
-            });
-          }.bind(this), 1);
-        }
-      };
-
-      animationManager.start();
+      AnimationManager.start();
 
     </script>
 
     <script>
-        var a = new Rectangle(canvas);
-        animationManager.register(a);
+        var a = createNewRectangle('gold');
+        var b = createNewRectangle('blue');
 
-        a.moveRight();
-        a.moveDown();
-        a.moveLeft();
-        a.moveUp();
+        a.move('right','down','left','up', 3);
+        b.move('right','right','left','down', 3);
+
+        b.move('stay',5);
+
+        b.move('right', 5);
     </script>
   </body>
 </html>
