@@ -12,21 +12,17 @@ Trying to make sure it is easy for them to understand codes from basics, by:
 
 ## **Usage** ##
 
-`var one = new createNewRectangle('red');`
+`var one = new createNewRectangle('red', 100);`
+first parameter -> Box colour
+second parameter -> Box movement speed in ms
 
 ### available movements ###
 
 ```javascript
-one.moveDown();
-one.moveUp();
-one.moveRight();
-one.moveLeft();
-```
-```javascript
-loop(12, function(){
-one.moveDown();
-one.moveLeft();
-});
+one.act('down');
+one.act('up');
+one.act('left');
+one.act('right');
 ```
 
 new function(direction, direction, ... , number of loop)

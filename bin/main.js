@@ -179,6 +179,14 @@ var Rectangle = exports.Rectangle = function () {
       this.registerMovement('top', top);
     }
   }, {
+    key: 'fart',
+    value: function fart() {
+      var top = this.position().top;
+      this.position().top = top;
+
+      this.registerMovement('fart', top);
+    }
+  }, {
     key: 'registerMovement',
     value: function registerMovement(property, value) {
       this.movementBuffer().push({ property: property, value: value });
@@ -188,6 +196,12 @@ var Rectangle = exports.Rectangle = function () {
     value: function triggerAnimation() {
       if (!this.isMoving() && this.movementBuffer().length > 0) {
         var movement = this.movementBuffer().shift();
+
+        if (movement.property === 'fart') {
+          this.doFart();
+          return;
+        }
+
         this.isMoving(true);
         this.rect().animate(movement.property, movement.value, {
           duration: this.config().animationDuration,
@@ -199,15 +213,15 @@ var Rectangle = exports.Rectangle = function () {
       }
     }
   }, {
-    key: 'fart',
-    value: function fart() {
+    key: 'doFart',
+    value: function doFart() {
       /* literally, at those children request */
       var audio = new Audio('assets/sound.mp3');
       audio.play();
     }
   }, {
-    key: 'move',
-    value: function move() {
+    key: 'act',
+    value: function act() {
       var args = arguments;
 
       var loopCount = 1;
@@ -235,6 +249,9 @@ var Rectangle = exports.Rectangle = function () {
               break;
             case 'stay':
               this.stay();
+              break;
+            case 'fart':
+              this.fart();
               break;
           }
         }
