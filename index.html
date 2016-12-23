@@ -19,65 +19,8 @@
     </script>
 
     <script>
-        var a = createNewRectangle('red', 100);
-        var b = createNewRectangle('blue', 100);
-        var c = createNewRectangle('yellow', 100);
-        var d = createNewRectangle('purple', 100);
-
-        a.act('right', 12);
-        a.act('stay', 24);
-        b.act('down', 12);
-        b.act('stay', 24);
-        c.act('right', 24);
-        c.act('down',12);
-        d.act('down', 24);
-        d.act('right',12);
-
-
-        /**/
-        a.act('fart');
-        a.act('down', 24);
-        b.act('right', 24);
-        c.act('left', 24);
-        d.act('up', 24);
-
-        /**/
-
-        a.act('right', 12);
-        a.act('up', 12);
-
-        b.act('up', 12);
-        b.act('left', 12);
-
-        c.act('down', 12);
-        c.act('right', 12);
-
-        d.act('left', 12);
-        d.act('down', 12);
-
-        /**/
-        a.act('fart');
-        a.act('up','left',12);
-        b.act('down','left',12);
-        c.act('up','right',12);
-        d.act('down','right',12);
-
-        /**/
-
-        a.act('down',6);
-        b.act('right',6);
-        c.act('left', 6);
-        d.act('up',6);
-
-        /**/
-
-        a.act('down', 'right', 6);
-        b.act('up', 'right', 6);
-        c.act('down', 'left', 6);
-        d.act('up','left', 6);
-
-        /**/
-
+      var box = createNewRectangle("red");
+      box.act('fart');
     </script>
   </body>
 </html>

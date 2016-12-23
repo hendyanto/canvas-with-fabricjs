@@ -28,5 +28,5 @@ one.act('right');
 new function(direction, direction, ... , number of loop)
 
 ```
-one.move('up','down',.......,5);
+one.act('up','down',.......,5);
 ```
